@@ -36,22 +36,26 @@ class ApiController extends Controller
         $trash_id = 1;
         $first_name = explode(' ', $user->name);
         if($basket != null) {
-//            $url = 'http://10.10.129.44:2233/api?user=' . $first_name[0] . '&score=' . $score . '&trash_id=' . $trash_id . '&basket_id=' . $basket->id . '&user_id=' . $user->id;
+            $url = 'http://10.10.129.44:2233/api?user=' . $first_name[0] . '&score=' . $score . '&trash_id=' . $trash_id . '&basket_id=' . $basket->id . '&user_id=' . $user->id;
 //            print_r($url);
 //            $response = Curl::to($url)
 ////            ->withData([ 'user'=> $user_id])
 ////            ->asJson()
 //                ->get();
 
-            $response = Curl::to('http://10.10.129.44:2233/api')
-                ->withData( array(
-                    'user' => $first_name[0],
-                    'score' => $score,
-                    'trash_id' => $trash_id,
-                    'basket_id' => $basket->id,
-                    'user_id' => $user_id
-                    ))
-                ->get();
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, $url);
+            $result = curl_exec($curl);
+
+//            $response = Curl::to('http://10.10.129.44:2233/api')
+//                ->withData( array(
+//                    'user' => $first_name[0],
+//                    'score' => $score,
+//                    'trash_id' => $trash_id,
+//                    'basket_id' => $basket->id,
+//                    'user_id' => $user_id
+//                    ))
+//                ->get();
         }else{
             $url = 'http://10.10.129.44:2233/api?user=' . $first_name[0] . '&score=' . $score . '&trash_id=' . $trash_id . '&basket_id=1&user_id=' . $user->id;
             $response = Curl::to($url)
