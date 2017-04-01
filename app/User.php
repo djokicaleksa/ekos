@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'qrc'
     ];
 
     /**
@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function trash(){
-        return $this->belongsToMany('App\Trash')->withTimestamps();
+        return $this->belongsToMany('App\Trash')->withTimestamps()->withPivot('basket_id');
     }
 
     public function plasticCountForUser()
@@ -37,7 +37,7 @@ class User extends Authenticatable
         $count = 0;
 
         foreach ($trash as $t){
-            if($t->pivot->trash_id == 2){
+            if($t->id == 2){
                 $count++;
             }
         }

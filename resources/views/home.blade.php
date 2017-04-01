@@ -8,7 +8,8 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    {!! QrCode::generate('Make me into a QrCode!')!!}
+                {!! DNS2D::getBarcodeSVG("Sara Guzara", "DATAMATRIX") !!}
+                </div>
             </div>
         </div>
     </div>

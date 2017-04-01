@@ -12,4 +12,8 @@ class Trash extends Model
         return $this->belongsToMany('App\User')->withTimestamps();
     }
 
+    public function baskets(){
+        return $this->belongsToMany('App\Basket')->withTimestamps();
+    }
+
 }

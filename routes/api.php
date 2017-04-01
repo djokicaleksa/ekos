@@ -29,3 +29,7 @@ Route::get('/get-global-stats', 'ApiController@globalStats');
 Route::get('/get-aluminium', 'ApiController@getAllAluminium');
 Route::get('/get-paper', 'ApiController@getAllPaper');
 Route::get('/get-plastic', 'ApiController@getAllPlastic');
+
+Route::get('my-stats', 'ApiController@myStats');
+
+Route::post('/get-from-android', 'ApiController@getFromAndroid');

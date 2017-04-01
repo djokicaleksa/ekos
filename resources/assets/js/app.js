@@ -14,7 +14,20 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('mystats', require('./components/MyStats.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        stats:[]
+    },
+
+    created(){
+        console.log('created');
+        axios.get('/api/my-stats').then(function(response){
+            this.stats = response.data;
+        });
+    }
+
+
 });

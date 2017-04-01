@@ -72,6 +72,8 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li><a href="{{ url('mystats') }}">My Stats</a></li>
+                            <li><a href="{{ url('stats') }}">Global Stats</a></li>
                         @endif
                     </ul>
                 </div>
