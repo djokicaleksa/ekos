@@ -15,8 +15,8 @@ class ApiController extends Controller
     public function score(Request $request)
     {
         $user_id = $request->get('user_id');
-        $trash_id = $request->get('trash_id');
-        $basket_id = $request->get('basket_id');
+        $trash_id = 1;
+        $basket_id = 1;
 
         $basket = Basket::findOrFail($basket_id);
         $user = User::findOrFail($user_id);
