@@ -47,6 +47,21 @@ class ApiController extends Controller
             curl_setopt($curl, CURLOPT_URL, $url);
             $result = curl_exec($curl);
 
+            $proxy = 'http://proxy.dev.fon.bg.ac.rs:3128';
+
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_PROXY, $proxy);
+
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+            $curl_scraped_page = curl_exec($ch);
+            curl_close($ch);
+
+            echo $curl_scraped_page;
+
 //            $response = Curl::to('http://10.10.129.44:2233/api')
 //                ->withData( array(
 //                    'user' => $first_name[0],
