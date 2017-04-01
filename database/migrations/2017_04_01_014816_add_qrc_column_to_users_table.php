@@ -14,7 +14,7 @@ class AddQrcColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('qrc')->unique();
+            $table->string('qrc');
         });
     }
 
