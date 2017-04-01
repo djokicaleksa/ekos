@@ -48,9 +48,7 @@ class HomeController extends Controller
         $plastic = User::allPlastic();
         $paper = User::allPaper();
         $aluminium = User::allAluminium();
-
         $byBasket = Basket::basketStats();
-
         return view('globalstats', compact('plastic', 'paper', 'aluminium', 'byBasket'));
     }
 }

@@ -26,6 +26,23 @@ class ApiController extends Controller
         return response()->json(['result'=>'From the downtown!!']);
     }
 
+    public function getFromAndroid(Request $request)
+    {
+        $user_id = $request->get('user_id');
+        $user = User::findOrFail($user_id);
+        $basket_hash = $request->get('basket_hash');
+        $basket = Basket::select('id', 'address', 'basket_hash')->where('basket_hash', '=', $basket_hash)->first();
+        $score = $user->plasticCountForUser();
+        $trash_id = 1;
+
+        return response()->json(['http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id]);
+
+        $response = Curl::to('http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id)
+//            ->withData([ 'user'=> $user_id])
+//            ->asJson()
+            ->get();
+    }
+
     public function userStats($id)
     {
         $user = User::findOrFail($id);
@@ -78,21 +95,6 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
-    public function getFromAndroid(Request $request)
-    {
-
-        $user_id = $request->get('user_id');
-        $user = User::findOrFail($user_id);
-        $basket_hash = $request->get('basket_hash');
-        $basket = Basket::select('id', 'address', 'basket_hash')->where('basket_hash', '=', $basket_hash)->first();
-        $score = $user->plasticCountForUser();
-        $trash_id = 1;
-
-        $response = Curl::to('http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id)
-//            ->withData([ 'user'=> $user_id])
-//            ->asJson()
-            ->get();
-    }
 
     public function myStats()
     {
