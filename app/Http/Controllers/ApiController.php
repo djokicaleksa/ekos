@@ -36,8 +36,8 @@ class ApiController extends Controller
         $trash_id = 1;
 
 //        return response()->json(['http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id]);
-
-        $response = Curl::to('http://10.10.129.44:2233/api?user="'.$user->name . '""&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id)
+        $first_name = explode(' ', $user->name);
+        $response = Curl::to('http://10.10.129.44:2233/api?user='.$first_name[0] . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id . '&user_id=' . $user->id)
 //            ->withData([ 'user'=> $user_id])
 //            ->asJson()
             ->get();
