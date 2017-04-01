@@ -26,4 +26,85 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function trash(){
+        return $this->belongsToMany('App\Trash')->withTimestamps();
+    }
+
+    public function plasticCountForUser()
+    {
+        $trash = $this->trash;
+        $count = 0;
+
+        foreach ($trash as $t){
+            if($t->pivot->trash_id == 2){
+                $count++;
+            }
+        }
+
+        return $count;
+
+    }
+
+    public function aluCountForUser()
+    {
+        $trash = $this->trash;
+        $count = 0;
+
+        foreach ($trash as $t){
+            if($t->pivot->trash_id == 1){
+                $count++;
+            }
+        }
+
+        return $count;
+
+    }
+
+    public function paperCountForUser()
+    {
+        $trash = $this->trash;
+        $count = 0;
+
+        foreach ($trash as $t){
+            if($t->pivot->trash_id == 3){
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    public static function allPlastic()
+    {
+        $users = User::all();
+        $count = 0;
+        foreach ($users as $user){
+            $count += $user->plasticCountForUser();
+        }
+
+        return $count;
+    }
+
+    public static function allAluminium()
+    {
+        $users = User::all();
+        $count = 0;
+        foreach ($users as $user){
+            $count += $user->aluCountForUser();
+        }
+
+        return $count;
+    }
+
+    public static function allPaper()
+    {
+        $users = User::all();
+        $count = 0;
+        foreach ($users as $user){
+            $count += $user->paperCountForUser();
+        }
+
+        return $count;
+    }
 }
