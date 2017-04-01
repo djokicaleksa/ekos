@@ -47,7 +47,7 @@ class ApiController extends Controller
             curl_setopt($curl, CURLOPT_URL, $url);
             $result = curl_exec($curl);
 
-            $proxy = 'http://proxy.dev.fon.bg.ac.rs:3128';
+            $proxy = '';
 
 
             $ch = curl_init();
