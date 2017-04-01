@@ -37,30 +37,6 @@ class ApiController extends Controller
         $first_name = explode(' ', $user->name);
         if($basket != null) {
             $url = 'http://10.10.129.44:2233/api?user=' . $first_name[0] . '&score=' . $score . '&trash_id=' . $trash_id . '&basket_id=' . $basket->id . '&user_id=' . $user->id;
-            print_r($url);
-//            $response = Curl::to($url)
-////            ->withData([ 'user'=> $user_id])
-////            ->asJson()
-//                ->get();
-
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, $url);
-            $result = curl_exec($curl);
-
-            $proxy = '';
-
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL,$url);
-            curl_setopt($ch, CURLOPT_PROXY, $proxy);
-
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HEADER, 1);
-            $curl_scraped_page = curl_exec($ch);
-            curl_close($ch);
-
-            echo $curl_scraped_page;
 
 //            $response = Curl::to('http://10.10.129.44:2233/api')
 //                ->withData( array(

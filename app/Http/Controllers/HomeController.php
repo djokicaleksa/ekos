@@ -33,14 +33,14 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        $stats = [
-            'name' => $user->name,
-            'aluminium' => $user->aluCountForUser(),
-            'plastic' => $user->plasticCountForUser(),
-            'paper' => $user->paperCountForUser(),
-        ];
 
-        return view('mystats', compact('stats'));
+            $name = $user->name;
+            $aluminium = $user->aluCountForUser();
+            $plastic = $user->plasticCountForUser();
+            $paper = $user->paperCountForUser();
+
+
+        return view('mystats', compact('name','aluminium', 'plastic', 'paper'));
     }
 
     public function globalStats()
@@ -51,4 +51,5 @@ class HomeController extends Controller
         $byBasket = Basket::basketStats();
         return view('globalstats', compact('plastic', 'paper', 'aluminium', 'byBasket'));
     }
+
 }

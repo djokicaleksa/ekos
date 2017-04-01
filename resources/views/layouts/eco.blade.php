@@ -31,8 +31,13 @@
         </div>
         <div id="navbar-collapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="{{url('login')}}">Login</a></li>
-                <li><a href="{{url('register')}}">Register</a></li>
+                @if(!Auth::check())
+                    <li class="{{ Request::is('/login*') ? 'active' : '' }}"><a href="{{url('login')}}">Login</a></li>
+                    <li class="{{ Request::is('/register*') ? 'active' : '' }}"><a href="{{url('register')}}">Register</a></li>
+                @else
+                    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{url('/')}}">Home</a></li>
+                    <li class="{{ Request::is('mystats') ? 'active' : '' }}"><a href="{{url('/mystats')}}">My Stats</a></li>
+                @endif
             </ul>
         </div>
     </div>

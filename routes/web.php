@@ -12,7 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $users = \App\User::all();
+    $rank = [];
+    $i = 0;
+    foreach ($users as $user){
+        $rank[$i]['name'] = $user->name;
+        $rank[$i]['points'] = $user->allCountForUser();
+        $i++;
+    }
+
+    usort($rank, function($a, $b) {
+        return $b['points'] - $a['points'];
+    });
+
+    return view('welcome', compact('rank'));
 });
 
 Auth::routes();

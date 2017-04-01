@@ -31,6 +31,17 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Trash')->withTimestamps()->withPivot('basket_id');
     }
 
+    public function allCountForUser()
+    {
+        $trash = $this->trashes;
+        $count = 0;
+
+        foreach ($trash as $t){
+                $count++;
+        }
+        return $count;
+    }
+
     public function plasticCountForUser()
     {
         $trash = $this->trashes;
@@ -41,9 +52,7 @@ class User extends Authenticatable
                 $count++;
             }
         }
-
         return $count;
-
     }
 
     public function aluCountForUser()
