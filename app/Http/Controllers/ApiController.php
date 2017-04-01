@@ -20,8 +20,9 @@ class ApiController extends Controller
 
         $basket = Basket::findOrFail($basket_id);
         $user = User::findOrFail($user_id);
-        $basket->trash()->attach($trash_id);
-        $user->trash()->attach($trash_id, ['basket_id'=>$basket_id]);
+        $basket->trashes()->attach($trash_id);
+        $user->trashes()->attach($trash_id, ['basket_id'=>$basket_id]);
+
         return response()->json(['result'=>'From the downtown!!']);
     }
 
