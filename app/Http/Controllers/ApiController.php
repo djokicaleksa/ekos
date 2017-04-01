@@ -7,7 +7,7 @@ use App\Trash;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 use Ixudra\Curl\Facades\Curl;
 
 class ApiController extends Controller
@@ -31,16 +31,23 @@ class ApiController extends Controller
         $user_id = $request->get('user_id');
         $user = User::findOrFail($user_id);
         $basket_hash = $request->get('basket_hash');
-        $basket = Basket::select('id', 'address', 'basket_hash')->where('basket_hash', '=', $basket_hash)->first();
+        $basket = DB::table('baskets')->where('basket_hash', '=', $basket_hash)->first();
         $score = $user->plasticCountForUser();
         $trash_id = 1;
-
-//        return response()->json(['http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id]);
         $first_name = explode(' ', $user->name);
-        $response = Curl::to('http://10.10.129.44:2233/api?user='.$first_name[0] . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id . '&user_id=' . $user->id)
+        if($basket != null) {
+            $url = 'http://10.10.129.44:2233/api?user=' . $first_name[0] . '&score=' . $score . '&trash_id=' . $trash_id . '&basket_id=' . $basket->id . '&user_id=' . $user->id;
+            $response = Curl::to($url)
 //            ->withData([ 'user'=> $user_id])
 //            ->asJson()
-            ->get();
+                ->get();
+        }else{
+            $url = 'http://10.10.129.44:2233/api?user=' . $first_name[0] . '&score=' . $score . '&trash_id=' . $trash_id . '&basket_id=1&user_id=' . $user->id;
+            $response = Curl::to($url)
+//            ->withData([ 'user'=> $user_id])
+//            ->asJson()
+                ->get();
+        }
     }
 
     public function userStats($id)
