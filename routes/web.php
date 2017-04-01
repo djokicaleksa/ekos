@@ -34,3 +34,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('/mystats', 'HomeController@myStats');
 Route::get('/stats', 'HomeController@globalStats');
+
+
+Route::group(['middleware' => 'admin'], function (){
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/basket/create', 'AdminController@create');
+    Route::post('/admin/basket/create', 'AdminController@store');
+});

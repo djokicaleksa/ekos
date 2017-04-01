@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Basket extends Model
 {
     protected $fillable = [
-        'basket_hash', 'address'
+        'basket_hash', 'address', 'longitude', 'latitude'
     ];
 
     public function trashes(){

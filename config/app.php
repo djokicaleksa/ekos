@@ -165,6 +165,7 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
 
+        Collective\Html\HtmlServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -231,6 +232,8 @@ return [
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Curl' => Ixudra\Curl\Facades\Curl::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
 
 

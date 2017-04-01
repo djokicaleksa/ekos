@@ -74,11 +74,11 @@
             <form method="POST" action="{{ route('login') }}">
                 {{csrf_field()}}
                 <div class="input-wrap">
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
                     <div class="float-label">E-mail</div><span class="bar"></span>
                 </div>
                 <div class="input-wrap">
-                    <input id="password" type="password" class="form-control" name="password" required>
+                    <input id="password" type="password" name="password" required>
                     <div class="float-label">Password</div><span class="bar"></span>
                 </div>
                 <button type="submit" class="button">Login</button>

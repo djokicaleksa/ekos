@@ -82,19 +82,19 @@
             <form method="POST" action="{{ route('register') }}">
                 {{csrf_field()}}
                 <div class="input-wrap">
-                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
                     <div class="float-label">Name</div><span class="bar"></span>
                 </div>
                 <div class="input-wrap">
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
                     <div class="float-label">E-mail</div><span class="bar"></span>
                 </div>
                 <div class="input-wrap">
-                    <input id="password" type="password" class="form-control" name="password" required>
+                    <input id="password" type="password" name="password" required>
                     <div class="float-label">Password</div><span class="bar"></span>
                 </div>
                 <div class="input-wrap">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                    <input id="password-confirm" type="password" name="password_confirmation" required>
                     <div class="float-label">Password confirm</div><span class="bar"></span>
                 </div>
                 <button type="submit" class="button">Login</button>

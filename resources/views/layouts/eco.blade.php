@@ -42,19 +42,27 @@
         </div>
     </div>
 </nav>
-@yield('content')
-<footer>
-    <div class="block">
-        <div class="col center">
-            <p>Copyright &copy;<span class="year"> </span>Eco Basket | All Rights Reserved</p>
-            <p>by Ave Masa</p>
+
+<div class="page-wrap">
+    @yield('content')
+</div>
+
+<div class="footer-wrap">
+    <footer>
+        <div class="block">
+            <div class="col center">
+                <p>Copyright &copy;<span class="year"> </span>Eco Basket | All Rights Reserved</p>
+                <p>by Ave Masa</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
+</div>
 {{--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>--}}
 {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaqLLQ0652JWFgPi1d_sPYl1jTKPPrOkQ&amp;callback=initMap" async="" defer=""></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/app2.js')}}"></script>
+
+@yield('footer')
 </body>
 </html>
