@@ -35,9 +35,9 @@ class ApiController extends Controller
         $score = $user->plasticCountForUser();
         $trash_id = 1;
 
-        return response()->json(['http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id]);
+//        return response()->json(['http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id]);
 
-        $response = Curl::to('http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id)
+        $response = Curl::to('http://10.10.129.44:2233/api?user="'.$user->name . '""&score=' . $score . '&trash_id=' .$trash_id . '&basket_id=' . $basket->id)
 //            ->withData([ 'user'=> $user_id])
 //            ->asJson()
             ->get();
