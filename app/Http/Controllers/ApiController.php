@@ -14,11 +14,12 @@ class ApiController extends Controller
 {
     public function score(Request $request)
     {
+        return session()->all();
         $user_id = session('user_id');
         $trash_id = $request->get('trash_id');
         $basket_id = session('basket_id');
 
-        $basket = Basket::findOrFail($basket_id);
+        $basket = Basket::findOrFail(1);
         $user = User::findOrFail($user_id);
         $basket->trash()->attach($trash_id);
         $user->trash()->attach($trash_id, ['basket_id'=>$basket_id]);
@@ -83,9 +84,9 @@ class ApiController extends Controller
         $user_id = $request->get('user_id');
         $user = User::findOrFail($user_id);
         $basket_hash = $request->get('basket_hash');
-        $basket = Basket::select('id', 'address', 'basket_hash')->where('basket_hash', '=', $basket_hash)->first();
+//        $basket = Basket::select('id', 'address', 'basket_hash')->where('basket_hash', '=', $basket_hash)->first();
         $score = $user->plasticCountForUser();
-        session(['user_id' => $user_id, 'basket_id'=>$basket->id]);
+        session(['user_id' => $user_id, 'basket_id'=>1]);
         $response = Curl::to('http://10.10.129.44:2233/api?user='.$user->name . '&score=' . $score)
 //            ->withData([ 'user'=> $user_id])
 //            ->asJson()
