@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function trash(){
+    public function trashes(){
         return $this->belongsToMany('App\Trash')->withTimestamps()->withPivot('basket_id');
     }
 
