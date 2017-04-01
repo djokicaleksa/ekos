@@ -37,6 +37,7 @@ class ApiController extends Controller
         $first_name = explode(' ', $user->name);
         if($basket != null) {
             $url = 'http://10.10.129.44:2233/api?user=' . $first_name[0] . '&score=' . $score . '&trash_id=' . $trash_id . '&basket_id=' . $basket->id . '&user_id=' . $user->id;
+            print_r($url);
             $response = Curl::to($url)
 //            ->withData([ 'user'=> $user_id])
 //            ->asJson()
