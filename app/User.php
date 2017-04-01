@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     public function plasticCountForUser()
     {
-        $trash = $this->trash;
+        $trash = $this->trashes;
         $count = 0;
 
         foreach ($trash as $t){
@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function aluCountForUser()
     {
-        $trash = $this->trash;
+        $trash = $this->trashes;
         $count = 0;
 
         foreach ($trash as $t){
@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function paperCountForUser()
     {
-        $trash = $this->trash;
+        $trash = $this->trashes;
         $count = 0;
 
         foreach ($trash as $t){
