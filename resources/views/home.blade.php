@@ -8,8 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
-                </div>
+                    {!! QrCode::generate('Make me into a QrCode!')!!}
             </div>
         </div>
     </div>
